@@ -1,0 +1,37 @@
+﻿<Page
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Redmine.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:Redmine.View.Controls"
+    xmlns:Interactivity="using:Microsoft.Xaml.Interactivity" 
+    xmlns:Core="using:Microsoft.Xaml.Interactions.Core"
+    x:Class="Redmine.View.LoginPage"
+    mc:Ignorable="d"
+    DataContext="{Binding LoginViewModel, Source={StaticResource Locator}}">
+
+	<Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        
+		<Interactivity:Interaction.Behaviors>
+			<Core:EventTriggerBehavior>
+				<Core:InvokeCommandAction Command="{Binding InitCommand, Mode=OneWay}"/>
+			</Core:EventTriggerBehavior>
+		</Interactivity:Interaction.Behaviors>
+        
+		<StackPanel Margin="20">
+            <TextBlock Text="[Redmine Url]" x:Uid="LoginPageEndpointUrl" />
+			<TextBox Text="{Binding EndpointUrl, Mode=TwoWay}" IsTextPredictionEnabled="False" Margin="0,0,0,20" />
+            <TextBlock Text="[Username]" x:Uid="LoginPageUserName" />
+			<TextBox Text="{Binding UserName, Mode=TwoWay}" IsTextPredictionEnabled="False" Margin="0,0,0,20" />
+            <TextBlock Text="[Password]" x:Uid="LoginPagePassword" />
+			<PasswordBox Password="{Binding Password, Mode=TwoWay}" Margin="0,0,0,10" />
+            <CheckBox Content="[Save credentials]" x:Uid="LoginPageSaveCredentials" IsChecked="{Binding SaveCredentials, Mode=TwoWay}" />
+
+            <Button Content="[Login]" x:Uid="LoginPageButtonLogin" Command="{Binding LoginCommand}" HorizontalAlignment="Stretch" />
+		</StackPanel>
+        
+		<controls:ModalProgress />
+        
+	</Grid>
+</Page>

@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Package xmlns="http://schemas.microsoft.com/appx/2010/manifest">
+  
+  <Identity Name="4514ced1-89eb-4d36-b780-63cca7739233"
+            Publisher="CN=Philipp.Bauknecht"
+            Version="1.0.0.0" />
+  
+  <Properties>
+    <DisplayName>Redmine.Portable.Tests</DisplayName>
+    <PublisherDisplayName>Philipp.Bauknecht</PublisherDisplayName>
+    <Logo>Images\UnitTestStoreLogo.png</Logo>
+    <Description>Redmine.Portable.Tests</Description>
+  </Properties>
+  
+  <Prerequisites>
+    <OSMinVersion>6.3.0</OSMinVersion>
+    <OSMaxVersionTested>6.3.0</OSMaxVersionTested>
+  </Prerequisites>
+  
+  <Resources>
+    <Resource Language="x-generate"/>
+  </Resources>
+  
+  <Applications>
+    <Application Id="vstest.executionengine.App" 
+        Executable="vstest.executionengine.appcontainer.exe" 
+        EntryPoint="vstest.executionengine.App">
+        <VisualElements 
+            DisplayName="NoUIEntryPoints"
+            Logo="Images\UnitTestLogo.png"
+            SmallLogo="Images\UnitTestSmallLogo.png"
+            Description="vstest.executionengine.App"
+            ForegroundText="light"
+            BackgroundColor="#0084FF">
+            <SplashScreen Image="Images\UnitTestSplashScreen.png" />
+        </VisualElements>
+    </Application>
+
+    <Application Id="vstest.executionengine.x86.App" 
+        Executable="vstest.executionengine.appcontainer.x86.exe" 
+        EntryPoint="vstest.executionengine.x86.App">
+        <VisualElements 
+            DisplayName="NoUIEntryPoints"
+            Logo="Images\UnitTestLogo.png"
+            SmallLogo="Images\UnitTestSmallLogo.png"
+            Description="vstest.executionengine.x86.App"
+            ForegroundText="light"
+            BackgroundColor="#0084FF">
+            <SplashScreen Image="Images\UnitTestSplashScreen.png" />
+        </VisualElements>
+    </Application>
+  </Applications>
+  <Capabilities>
+    <Capability Name="internetClient" />
+  </Capabilities>
+</Package>
