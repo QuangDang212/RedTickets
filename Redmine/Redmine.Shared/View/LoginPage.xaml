@@ -11,15 +11,15 @@
     mc:Ignorable="d"
     DataContext="{Binding LoginViewModel, Source={StaticResource Locator}}">
 
-	<Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+	<Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" >
         
 		<Interactivity:Interaction.Behaviors>
 			<Core:EventTriggerBehavior>
 				<Core:InvokeCommandAction Command="{Binding InitCommand, Mode=OneWay}"/>
 			</Core:EventTriggerBehavior>
 		</Interactivity:Interaction.Behaviors>
-        
-		<StackPanel Margin="20">
+
+        <StackPanel Margin="20" Visibility="{Binding ShowLoginUI, Converter={StaticResource BoolToVisibilityConverter}}">
             <TextBlock Text="[Redmine Url]" x:Uid="LoginPageEndpointUrl" />
 			<TextBox Text="{Binding EndpointUrl, Mode=TwoWay}" IsTextPredictionEnabled="False" Margin="0,0,0,20" />
             <TextBlock Text="[Username]" x:Uid="LoginPageUserName" />

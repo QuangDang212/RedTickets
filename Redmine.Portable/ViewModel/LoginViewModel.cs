@@ -59,6 +59,13 @@ namespace Redmine.Portable.ViewModel
             set { _currentUser = value; RaisePropertyChanged(); }
         }
 
+        private bool _showLoginUI = false;
+        public bool ShowLoginUI
+        {
+            get { return _showLoginUI; }
+            set { _showLoginUI = value; RaisePropertyChanged(); }
+        }
+
         public LoginViewModel(IDataService dataService, ICredentialService credentialService, IDialogService dialogService, IResourceService resourceService, IExtendedNavigationService navigationService)
         {
             _dataService = dataService;
@@ -77,6 +84,8 @@ namespace Redmine.Portable.ViewModel
             var currentCredential = _credentialService.GetEndpointCredential(DEFAULT_ENDPOINT_NAME);
             if (currentCredential != null)
                 await GetUserAsyc(currentCredential);
+            else
+                ShowLoginUI = true;
         }
 
         private async void Login()
@@ -110,11 +119,13 @@ namespace Redmine.Portable.ViewModel
         private async Task GetUserAsyc(EndpointCredential credential)
         {
             IsLoading = true;
+            LoadingMessage = _resourceService.GetString("LoginLoadingMessage");
 
             _dataService.Initialize(credential);
             var result = await _dataService.GetCurrentUser();
 
             IsLoading = false;
+            LoadingMessage = null;
             
             if (result.IsSuccessStatusCode && result.Result != null && result.Result.User != null)
             {
@@ -137,6 +148,7 @@ namespace Redmine.Portable.ViewModel
         {
             _credentialService.DeleteEndpointCredential(DEFAULT_ENDPOINT_NAME);
             CurrentUser = null;
+            ShowLoginUI = true;
             _navigationService.NavigateTo(ViewModelLocator.LOGIN_PAGE_KEY, false, true);
         }
     }

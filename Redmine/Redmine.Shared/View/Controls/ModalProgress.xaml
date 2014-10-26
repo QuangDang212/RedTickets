@@ -14,6 +14,14 @@
     
     <Grid>
         <Rectangle Fill="{ThemeResource ApplicationPageBackgroundThemeBrush}" Opacity="0.7" />
-        <ProgressRing IsActive="True" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{StaticResource PrimaryAccentBrush}" />
+        <StackPanel HorizontalAlignment="Center" 
+                    VerticalAlignment="Center" >
+            <ProgressRing IsActive="True" 
+                      Foreground="{StaticResource PrimaryAccentBrush}"
+                      Background="Transparent"/>
+            <TextBlock Text="{Binding LoadingMessage}"
+                       Style="{StaticResource BaseTextBlockStyle}"
+                       Margin="0,10,0,0" />
+        </StackPanel>
     </Grid>
 </UserControl>
