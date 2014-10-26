@@ -18,7 +18,7 @@ namespace Redmine.Portable.ViewModel
         private ICredentialService _credentialService;
         private IDialogService _dialogService;
         private IResourceService _resourceService;
-        private INavigationService _navigationService;
+        private IExtendedNavigationService _navigationService;
 
         public RelayCommand InitCommand { get; private set; }
         public RelayCommand LoginCommand { get; private set; }
@@ -59,7 +59,7 @@ namespace Redmine.Portable.ViewModel
             set { _currentUser = value; RaisePropertyChanged(); }
         }
 
-        public LoginViewModel(IDataService dataService, ICredentialService credentialService, IDialogService dialogService, IResourceService resourceService, INavigationService navigationService)
+        public LoginViewModel(IDataService dataService, ICredentialService credentialService, IDialogService dialogService, IResourceService resourceService, IExtendedNavigationService navigationService)
         {
             _dataService = dataService;
             _credentialService = credentialService;
@@ -124,7 +124,7 @@ namespace Redmine.Portable.ViewModel
                 UserName = null;
                 Password = null;
 
-                _navigationService.NavigateTo(ViewModelLocator.PROJECTS_PAGE_KEY);
+                _navigationService.NavigateTo(ViewModelLocator.PROJECTS_PAGE_KEY, true, false);
             }
             else
             {
@@ -137,7 +137,7 @@ namespace Redmine.Portable.ViewModel
         {
             _credentialService.DeleteEndpointCredential(DEFAULT_ENDPOINT_NAME);
             CurrentUser = null;
-            _navigationService.GoBack();
+            _navigationService.NavigateTo(ViewModelLocator.LOGIN_PAGE_KEY, false, true);
         }
     }
 }

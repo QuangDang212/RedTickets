@@ -23,9 +23,10 @@ namespace Redmine
         {
             ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
 
-            var nav = new NavigationService();
+            var nav = new ExtendedNavigationService();
             nav.Configure(ViewModelLocator.PROJECTS_PAGE_KEY, typeof(ProjectsPage));
-            SimpleIoc.Default.Register<INavigationService>(() => nav);
+            nav.Configure(ViewModelLocator.LOGIN_PAGE_KEY, typeof(LoginPage));
+            SimpleIoc.Default.Register<IExtendedNavigationService>(() => nav);
 
             SimpleIoc.Default.Register<ISettingsService, SettingsService>();
             SimpleIoc.Default.Register<ILocalStorageService, LocalStorageService>();

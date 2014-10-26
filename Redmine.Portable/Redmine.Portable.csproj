@@ -40,6 +40,7 @@
   <ItemGroup>
     <Compile Include="Interface\ICredentialService.cs" />
     <Compile Include="Interface\IDataService.cs" />
+    <Compile Include="Interface\IExtendedNavigationService.cs" />
     <Compile Include="Interface\ILocalStorageService.cs" />
     <Compile Include="Interface\IResourceService.cs" />
     <Compile Include="Interface\ISettingsService.cs" />
