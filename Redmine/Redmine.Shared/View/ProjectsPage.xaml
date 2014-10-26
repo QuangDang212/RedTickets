@@ -25,7 +25,7 @@
 
         <TextBlock Text="[Projects]" x:Uid="ProjectsPageTitle" Style="{StaticResource HeaderTextBlockStyle}" Margin="20,0,20,20" />
         
-        <ListView Grid.Row="1" ItemsSource="{Binding Projects}">
+        <ListView Grid.Row="1" ItemsSource="{Binding Projects}" IsItemClickEnabled="True" ItemClick="ListView_ItemClick">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Grid Margin="20,0">

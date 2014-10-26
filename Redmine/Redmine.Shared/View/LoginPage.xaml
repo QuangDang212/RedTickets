@@ -21,9 +21,9 @@
 
         <StackPanel Margin="20" Visibility="{Binding ShowLoginUI, Converter={StaticResource BoolToVisibilityConverter}}">
             <TextBlock Text="[Redmine Url]" x:Uid="LoginPageEndpointUrl" />
-			<TextBox Text="{Binding EndpointUrl, Mode=TwoWay}" IsTextPredictionEnabled="False" Margin="0,0,0,20" />
+			<TextBox Text="{Binding EndpointUrl, Mode=TwoWay}" IsTextPredictionEnabled="False" Margin="0,0,0,20" InputScope="Url" />
             <TextBlock Text="[Username]" x:Uid="LoginPageUserName" />
-			<TextBox Text="{Binding UserName, Mode=TwoWay}" IsTextPredictionEnabled="False" Margin="0,0,0,20" />
+			<TextBox Text="{Binding UserName, Mode=TwoWay}" IsTextPredictionEnabled="False" Margin="0,0,0,20" InputScope="EmailSmtpAddress"/>
             <TextBlock Text="[Password]" x:Uid="LoginPagePassword" />
 			<PasswordBox Password="{Binding Password, Mode=TwoWay}" Margin="0,0,0,10" />
             <CheckBox Content="[Save credentials]" x:Uid="LoginPageSaveCredentials" IsChecked="{Binding SaveCredentials, Mode=TwoWay}" />

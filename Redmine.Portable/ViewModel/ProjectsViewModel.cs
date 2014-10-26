@@ -1,4 +1,5 @@
 ﻿using GalaSoft.MvvmLight.Command;
+using GalaSoft.MvvmLight.Views;
 using Redmine.Portable.Interface;
 using Redmine.Portable.Model;
 using System;
@@ -13,8 +14,11 @@ namespace Redmine.Portable.ViewModel
     {
         private IDataService _dataService;
         private IResourceService _resourceService;
+        private IExtendedNavigationService _navigationService;
+        private IDialogService _dialogService;
 
         public RelayCommand InitCommand { get; private set; }
+        public RelayCommand<Project> ShowProjectCommand { get; private set; }
 
         private List<Project> _projects;
         public List<Project> Projects
@@ -23,12 +27,15 @@ namespace Redmine.Portable.ViewModel
             set { _projects = value; RaisePropertyChanged(); }
         }
 
-        public ProjectsViewModel(IDataService dataService, IResourceService resourceService)
+        public ProjectsViewModel(IDataService dataService, IResourceService resourceService, IExtendedNavigationService navigationService, IDialogService dialogService)
         {
             _dataService = dataService;
             _resourceService = resourceService;
+            _navigationService = navigationService;
+            _dialogService = dialogService;
 
             InitCommand = new RelayCommand(Init);
+            ShowProjectCommand = new RelayCommand<Project>(ShowProject);
         }
 
         private async void Init()
@@ -46,9 +53,16 @@ namespace Redmine.Portable.ViewModel
                 Projects = result.Result.Projects.ToList();
             }
             else
-            { 
-                // todo show error
+            {
+                var dialogResult = await _dialogService.ShowMessage(_resourceService.GetString("ProjectsLoadingErrorMessage"), _resourceService.GetString("ErrorTitle"), _resourceService.GetString("ButtonRetry"), _resourceService.GetString("ButtonCancel"), null);
+                if (dialogResult)
+                    Init();
             }
+        }
+
+        private void ShowProject(Project p)
+        {
+            _navigationService.NavigateTo(ViewModelLocator.PROJECT_PAGE_KEY, p);
         }
     }
 }

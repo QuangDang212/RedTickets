@@ -15,6 +15,8 @@ namespace Redmine.Portable.Interface
 
         Task<HttpResponse<ProjectsResult>> GetProjects(int? offset = null, int? limit = null);
 
+        Task<HttpResponse<ProjectResult>> GetProject(int id);
+
         Task<HttpResponse<UsersResult>> GetUsers(int? offset = null, int? limit = null);
 
         Task<HttpResponse<UserResult>> GetCurrentUser(bool includeMemberships = true, bool includeGroups = true);

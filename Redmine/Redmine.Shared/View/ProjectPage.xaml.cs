@@ -21,16 +21,21 @@ namespace Redmine.View
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class ProjectsPage : Page
+    public sealed partial class ProjectPage : Page
     {
-        public ProjectsPage()
+        public ProjectPage()
         {
             this.InitializeComponent();
         }
 
-        private void ListView_ItemClick(object sender, ItemClickEventArgs e)
+        protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            ((ProjectsViewModel)this.DataContext).ShowProjectCommand.Execute(e.ClickedItem);
+            if (e.Parameter != null)
+            {
+                ((ProjectViewModel)this.DataContext).InitCommand.Execute(e.Parameter);
+            }
+
+            base.OnNavigatedTo(e);
         }
     }
 }

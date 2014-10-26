@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,10 @@ namespace Redmine.Portable.Model
     {
         public int Id { get; set; }
 
-        //todo: add created_on and updated_on datetimes
+        [JsonProperty("created_on")]
+        public DateTime Created { get; set; }
+
+        [JsonProperty("updated_on")]
+        public DateTime Updated { get; set; }
     }
 }

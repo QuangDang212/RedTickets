@@ -6,8 +6,9 @@ namespace Redmine.Portable.ViewModel
 {
     public class ViewModelLocator
     {
-        public static string PROJECTS_PAGE_KEY = "ProjectsPage";
         public static string LOGIN_PAGE_KEY = "LoginPage";
+        public static string PROJECTS_PAGE_KEY = "ProjectsPage";
+        public static string PROJECT_PAGE_KEY = "ProjectPage";
 
         public LoginViewModel LoginViewModel
         {
@@ -22,6 +23,14 @@ namespace Redmine.Portable.ViewModel
             get
             {
                 return ServiceLocator.Current.GetInstance<ProjectsViewModel>();
+            }
+        }
+
+        public ProjectViewModel ProjectViewModel
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<ProjectViewModel>();
             }
         }
     }

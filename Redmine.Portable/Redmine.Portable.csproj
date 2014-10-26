@@ -55,6 +55,7 @@
     <Compile Include="Model\Membership.cs" />
     <Compile Include="Model\Priority.cs" />
     <Compile Include="Model\Project.cs" />
+    <Compile Include="Model\ProjectResult.cs" />
     <Compile Include="Model\ProjectsResult.cs" />
     <Compile Include="Model\Role.cs" />
     <Compile Include="Model\Status.cs" />
@@ -72,6 +73,7 @@
     <Compile Include="ViewModel\AsyncViewModelBase.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\ProjectsViewModel.cs" />
+    <Compile Include="ViewModel\ProjectViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
   </ItemGroup>
   <ItemGroup>
