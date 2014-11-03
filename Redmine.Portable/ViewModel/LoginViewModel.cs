@@ -19,6 +19,7 @@ namespace Redmine.Portable.ViewModel
         private IDialogService _dialogService;
         private IResourceService _resourceService;
         private IExtendedNavigationService _navigationService;
+        private INotificationService _notificationService;
 
         public RelayCommand InitCommand { get; private set; }
         public RelayCommand LoginCommand { get; private set; }
@@ -66,13 +67,14 @@ namespace Redmine.Portable.ViewModel
             set { _showLoginUI = value; RaisePropertyChanged(); }
         }
 
-        public LoginViewModel(IDataService dataService, ICredentialService credentialService, IDialogService dialogService, IResourceService resourceService, IExtendedNavigationService navigationService)
+        public LoginViewModel(IDataService dataService, ICredentialService credentialService, IDialogService dialogService, IResourceService resourceService, IExtendedNavigationService navigationService, INotificationService notificationService)
         {
             _dataService = dataService;
             _credentialService = credentialService;
             _dialogService = dialogService;
             _resourceService = resourceService;
             _navigationService = navigationService;
+            _notificationService = notificationService;
 
             InitCommand = new RelayCommand(Init);
             LoginCommand = new RelayCommand(Login);
@@ -136,11 +138,24 @@ namespace Redmine.Portable.ViewModel
                 Password = null;
 
                 _navigationService.NavigateTo(ViewModelLocator.PROJECTS_PAGE_KEY, true, false);
+                GetUsersIssues();
             }
             else
             {
                 await _dialogService.ShowError(_resourceService.GetString("LoginErrorMessage"), _resourceService.GetString("ErrorTitle"), _resourceService.GetString("ButtonOK"), null);
                 return;
+            }
+        }
+
+        private async void GetUsersIssues()
+        {
+            if (_currentUser == null)
+                return;
+
+            var result = await _dataService.GetIssues(0, 1, null, null, null, null, Statuses.open, _currentUser.Id);
+            if (result.IsSuccessStatusCode && result.Result != null)
+            {
+                _notificationService.UpdateMainTile("open tickets", result.Result.TotalCount, "Hello World");
             }
         }
 

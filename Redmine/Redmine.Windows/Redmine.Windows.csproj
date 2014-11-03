@@ -113,12 +113,6 @@
     <None Include="Redmine.Windows_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\Logo.scale-100.png" />
-    <Content Include="Assets\SmallLogo.scale-100.png" />
-    <Content Include="Assets\SplashScreen.scale-100.png" />
-    <Content Include="Assets\StoreLogo.scale-100.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Page Include="Styles\PlatformStyles.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -140,6 +134,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\NotificationsExtensions\NotificationsExtensions.csproj">
+      <Project>{6e87464b-b064-40ca-8161-7c18c337adff}</Project>
+      <Name>NotificationsExtensions</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Redmine.Portable\Redmine.Portable.csproj">
       <Project>{e746d58e-5a5a-40b9-880e-9e11e6bf44b5}</Project>
       <Name>Redmine.Portable</Name>
@@ -149,6 +147,23 @@
     <SDKReference Include="BehaviorsXamlSDKManaged, Version=12.0">
       <Name>Behaviors SDK %28XAML%29</Name>
     </SDKReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\Logo.Small.scale-100.png" />
+    <Content Include="Assets\Logo.Small.scale-140.png" />
+    <Content Include="Assets\Logo.Small.scale-180.png" />
+    <Content Include="Assets\Logo.Store.scale-100.png" />
+    <Content Include="Assets\Logo.Store.scale-140.png" />
+    <Content Include="Assets\Logo.Store.scale-180.png" />
+    <Content Include="Assets\SplashScreen.scale-100.png" />
+    <Content Include="Assets\SplashScreen.scale-140.png" />
+    <Content Include="Assets\SplashScreen.scale-180.png" />
+    <Content Include="Assets\Tile.Default.Medium.scale-100.png" />
+    <Content Include="Assets\Tile.Default.Medium.scale-140.png" />
+    <Content Include="Assets\Tile.Default.Medium.scale-180.png" />
+    <Content Include="Assets\Tile.Default.Small.scale-100.png" />
+    <Content Include="Assets\Tile.Default.Small.scale-140.png" />
+    <Content Include="Assets\Tile.Default.Small.scale-180.png" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">
     <VisualStudioVersion>12.0</VisualStudioVersion>

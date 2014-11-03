@@ -42,6 +42,7 @@
     <Compile Include="Interface\IDataService.cs" />
     <Compile Include="Interface\IExtendedNavigationService.cs" />
     <Compile Include="Interface\ILocalStorageService.cs" />
+    <Compile Include="Interface\INotificationService.cs" />
     <Compile Include="Interface\IResourceService.cs" />
     <Compile Include="Interface\ISettingsService.cs" />
     <Compile Include="Model\EndpointCredential.cs" />
@@ -53,6 +54,8 @@
     <Compile Include="Model\IssuesResult.cs" />
     <Compile Include="Model\ListResult.cs" />
     <Compile Include="Model\Membership.cs" />
+    <Compile Include="Model\MembershipGroup.cs" />
+    <Compile Include="Model\MembershipsResult.cs" />
     <Compile Include="Model\Priority.cs" />
     <Compile Include="Model\Project.cs" />
     <Compile Include="Model\ProjectResult.cs" />

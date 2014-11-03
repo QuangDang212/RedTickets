@@ -9,5 +9,7 @@ namespace Redmine.Portable.Model
     public class Tracker : Item
     {
         public String Name { get; set; }
+        public int CountTotal { get; set; }
+        public int CountOpen { get; set; }
     }
 }

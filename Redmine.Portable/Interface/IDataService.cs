@@ -11,14 +11,28 @@ namespace Redmine.Portable.Interface
     {
         void Initialize(EndpointCredential endpointCredential);
 
-        Task<HttpResponse<IssuesResult>> GetIssues(int? offset = null, int? limit = null, string sort = null, int? projectId = null, int? subProjectId = null, int? trackerId = null, int? statusId = null, int? assignedToId = null);
+        #region Issues
+
+        Task<HttpResponse<IssuesResult>> GetIssues(int? offset = null, int? limit = null, string sort = null, int? projectId = null, int? subProjectId = null, int? trackerId = null, Statuses status = Statuses.open, int? assignedToId = null);
+
+        #endregion
+
+        #region Projects
 
         Task<HttpResponse<ProjectsResult>> GetProjects(int? offset = null, int? limit = null);
 
-        Task<HttpResponse<ProjectResult>> GetProject(int id);
+        Task<HttpResponse<ProjectResult>> GetProject(int projectId);
+
+        Task<HttpResponse<MembershipsResult>> GetMemberships(int projectId, int? offset = null, int? limit = null);
+
+        #endregion
+
+        #region Users
 
         Task<HttpResponse<UsersResult>> GetUsers(int? offset = null, int? limit = null);
 
         Task<HttpResponse<UserResult>> GetCurrentUser(bool includeMemberships = true, bool includeGroups = true);
+
+        #endregion
     }
 }

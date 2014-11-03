@@ -10,4 +10,11 @@ namespace Redmine.Portable.Model
     {
         public string Name { get; set; }
     }
+
+    public enum Statuses 
+    {
+        open,
+        closed,
+        all
+    }
 }

@@ -36,6 +36,7 @@ namespace Redmine
             SimpleIoc.Default.Register<IDialogService, DialogService>();
             SimpleIoc.Default.Register<IResourceService, ResourceService>();
             SimpleIoc.Default.Register<ICredentialService, CredentialService>();
+            SimpleIoc.Default.Register<INotificationService, NotificationService>();
 
             SimpleIoc.Default.Register<LoginViewModel>();
             SimpleIoc.Default.Register<ProjectsViewModel>();

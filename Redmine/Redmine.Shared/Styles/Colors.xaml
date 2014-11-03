@@ -3,7 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:Redmine.Styles">
 
-    <Color x:Key="PrimaryAccentColor">#00BCF2</Color>
+    <Color x:Key="PrimaryAccentColor">#DC3C00</Color>
     
     <SolidColorBrush x:Key="PrimaryAccentBrush" Color="{StaticResource PrimaryAccentColor}" />
     

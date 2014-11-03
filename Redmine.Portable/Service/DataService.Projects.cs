@@ -12,6 +12,7 @@ namespace Redmine.Portable.Service
     {
         private const string PROJECTS_URL = "projects.json";
         private const string PROJECT_URL = "projects/{0}.json";
+        private const string MEMBERSHIPS_URL = "projects/{0}/memberships.json";
 
         public async Task<HttpResponse<ProjectsResult>> GetProjects(int? offset = null, int? limit = null)
         {
@@ -21,10 +22,18 @@ namespace Redmine.Portable.Service
             return result;
         }
 
-        public async Task<HttpResponse<ProjectResult>> GetProject(int id)
+        public async Task<HttpResponse<ProjectResult>> GetProject(int projectId)
         {
-            var requestUrl = _credential.EndpointUrl + String.Format(PROJECT_URL, id);
+            var requestUrl = _credential.EndpointUrl + String.Format(PROJECT_URL, projectId);
             var result = await GetDeserializedObject<ProjectResult>(requestUrl, HttpMode.Get);
+
+            return result;
+        }
+
+        public async Task<HttpResponse<MembershipsResult>> GetMemberships(int projectId, int? offset = null, int? limit = null)
+        {
+            var requestUrl = ListParameterFactory(_credential.EndpointUrl + String.Format(MEMBERSHIPS_URL, projectId), offset, limit);
+            var result = await GetDeserializedObject<MembershipsResult>(requestUrl, HttpMode.Get);
 
             return result;
         }

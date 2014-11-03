@@ -9,7 +9,18 @@
     DataContext="{Binding Source={StaticResource Locator}, Path=ProjectViewModel}">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Hub Header="{Binding ProjectTitle}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Border Padding="20,10">
+            <Border.Background>
+                <SolidColorBrush Color="{StaticResource PrimaryAccentColor}"
+                                 Opacity="0.085" />
+            </Border.Background>
+            <TextBlock Text="{Binding ProjectTitle}" />
+        </Border>
+        <Hub Grid.Row="1" Margin="0,27,0,0">
             <HubSection Header="[Overview]" />
             <HubSection Header="[Tickets]" />
         </Hub>
