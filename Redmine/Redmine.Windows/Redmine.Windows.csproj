@@ -164,6 +164,9 @@
     <Content Include="Assets\Tile.Default.Small.scale-100.png" />
     <Content Include="Assets\Tile.Default.Small.scale-140.png" />
     <Content Include="Assets\Tile.Default.Small.scale-180.png" />
+    <Content Include="Assets\Tile.Default.Wide.scale-100.png" />
+    <Content Include="Assets\Tile.Default.Wide.scale-140.png" />
+    <Content Include="Assets\Tile.Default.Wide.scale-180.png" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">
     <VisualStudioVersion>12.0</VisualStudioVersion>

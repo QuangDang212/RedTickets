@@ -84,7 +84,7 @@ namespace Redmine.Portable.ViewModel
         private async void Init()
         {
             var currentCredential = _credentialService.GetEndpointCredential(DEFAULT_ENDPOINT_NAME);
-            if (currentCredential != null)
+            if (currentCredential != null && ValidateCredentials(currentCredential.EndpointUrl, currentCredential.UserName, currentCredential.Password))
                 await GetUserAsyc(currentCredential);
             else
                 ShowLoginUI = true;
@@ -93,7 +93,7 @@ namespace Redmine.Portable.ViewModel
         private async void Login()
         {
             // Validate input
-            if (String.IsNullOrEmpty(_endpointUrl) || String.IsNullOrEmpty(_userName) || String.IsNullOrEmpty(_password))
+            if (!ValidateCredentials(_endpointUrl, _userName, _password))
             {
                 await _dialogService.ShowError(_resourceService.GetString("LoginIncompleteErrorMessage"), _resourceService.GetString("ErrorTitle"), _resourceService.GetString("ButtonOK"), null);
                 return;
@@ -116,6 +116,14 @@ namespace Redmine.Portable.ViewModel
             // try login
             await GetUserAsyc(currentCredential);
 
+        }
+
+        private bool ValidateCredentials(string endpointUrl, string userName, string password)
+        {
+            if (String.IsNullOrEmpty(endpointUrl) || String.IsNullOrEmpty(userName) || String.IsNullOrEmpty(password))
+                return false;
+
+            return true;
         }
 
         private async Task GetUserAsyc(EndpointCredential credential)
