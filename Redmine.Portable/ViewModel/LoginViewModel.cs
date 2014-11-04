@@ -163,7 +163,7 @@ namespace Redmine.Portable.ViewModel
             var result = await _dataService.GetIssues(0, 1, null, null, null, null, Statuses.open, _currentUser.Id);
             if (result.IsSuccessStatusCode && result.Result != null)
             {
-                _notificationService.UpdateMainTile("open tickets", result.Result.TotalCount, "Hello World");
+                _notificationService.UpdateMainTile("open tickets", result.Result.TotalCount, _resourceService.GetString("AppTitle"));
             }
         }
 

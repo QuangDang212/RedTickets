@@ -50,8 +50,10 @@
     <Compile Include="Model\HttpMode.cs" />
     <Compile Include="Model\HttpResponse.cs" />
     <Compile Include="Model\Issue.cs" />
+    <Compile Include="Model\IssueResult.cs" />
     <Compile Include="Model\Item.cs" />
     <Compile Include="Model\IssuesResult.cs" />
+    <Compile Include="Model\Journal.cs" />
     <Compile Include="Model\ListResult.cs" />
     <Compile Include="Model\Membership.cs" />
     <Compile Include="Model\MembershipGroup.cs" />
@@ -74,6 +76,7 @@
     <Compile Include="Service\HttpService.cs" />
     <Compile Include="Interface\IHttpService.cs" />
     <Compile Include="ViewModel\AsyncViewModelBase.cs" />
+    <Compile Include="ViewModel\IssueViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\ProjectsViewModel.cs" />
     <Compile Include="ViewModel\ProjectViewModel.cs" />

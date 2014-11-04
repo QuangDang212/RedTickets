@@ -5,6 +5,7 @@
     xmlns:local="using:Redmine.View"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:Redmine.View.Controls"
     mc:Ignorable="d"
     DataContext="{Binding Source={StaticResource Locator}, Path=ProjectViewModel}">
 
@@ -20,9 +21,25 @@
             </Border.Background>
             <TextBlock Text="{Binding ProjectTitle}" />
         </Border>
-        <Hub Grid.Row="1" Margin="0,27,0,0">
-            <HubSection Header="[Overview]" />
-            <HubSection Header="[Tickets]" />
-        </Hub>
+        
+        <ListView Grid.Row="1" ItemsSource="{Binding Issues}" IsItemClickEnabled="True" ItemClick="ListView_ItemClick">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Rectangle Height="1" Fill="{StaticResource PrimaryAccentBrush}" Opacity="0.2" VerticalAlignment="Top" />                                   
+                        <StackPanel Margin="20">
+                            <TextBlock Text="{Binding Subject}" FontSize="{StaticResource TextStyleLargeFontSize}" TextWrapping="Wrap" />
+                        </StackPanel>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <controls:ModalProgress />
     </Grid>
 </Page>

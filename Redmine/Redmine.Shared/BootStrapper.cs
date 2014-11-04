@@ -27,6 +27,7 @@ namespace Redmine
             nav.Configure(ViewModelLocator.LOGIN_PAGE_KEY, typeof(LoginPage));
             nav.Configure(ViewModelLocator.PROJECTS_PAGE_KEY, typeof(ProjectsPage));
             nav.Configure(ViewModelLocator.PROJECT_PAGE_KEY, typeof(ProjectPage));
+            nav.Configure(ViewModelLocator.ISSUE_PAGE_KEY, typeof(IssuePage));
             SimpleIoc.Default.Register<IExtendedNavigationService>(() => nav);
 
             SimpleIoc.Default.Register<ISettingsService, SettingsService>();
@@ -41,6 +42,7 @@ namespace Redmine
             SimpleIoc.Default.Register<LoginViewModel>();
             SimpleIoc.Default.Register<ProjectsViewModel>();
             SimpleIoc.Default.Register<ProjectViewModel>();
+            SimpleIoc.Default.Register<IssueViewModel>();
         }
     }
 }

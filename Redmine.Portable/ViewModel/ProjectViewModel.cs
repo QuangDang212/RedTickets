@@ -18,6 +18,7 @@ namespace Redmine.Portable.ViewModel
         private IExtendedNavigationService _navigationService;
 
         public RelayCommand<Project> InitCommand { get; private set; }
+        public RelayCommand<Issue> ShowIssueCommand { get; private set; }
 
         private Project _project;
         public Project Project
@@ -63,6 +64,7 @@ namespace Redmine.Portable.ViewModel
             _navigationService = navigationService;
 
             InitCommand = new RelayCommand<Project>(Init);
+            ShowIssueCommand = new RelayCommand<Issue>(ShowIssue);
 
             if (IsInDesignMode)
             {
@@ -193,6 +195,11 @@ namespace Redmine.Portable.ViewModel
             }
 
             return trackers;
+        }
+
+        private void ShowIssue(Issue i)
+        {
+            _navigationService.NavigateTo(ViewModelLocator.ISSUE_PAGE_KEY, i);
         }
     }
 }

@@ -15,6 +15,8 @@ namespace Redmine.Portable.Interface
 
         Task<HttpResponse<IssuesResult>> GetIssues(int? offset = null, int? limit = null, string sort = null, int? projectId = null, int? subProjectId = null, int? trackerId = null, Statuses status = Statuses.open, int? assignedToId = null);
 
+        Task<HttpResponse<IssueResult>> GetIssue(int id);
+
         #endregion
 
         #region Projects

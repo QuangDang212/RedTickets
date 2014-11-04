@@ -20,5 +20,7 @@ namespace Redmine.Portable.Model
         public string Subject { get; set; }
         public string Description { get; set; }
         public DateTime StartDate { get; set; }
+
+        public List<Journal> Journals { get; set; }
     }
 }

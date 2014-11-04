@@ -11,6 +11,7 @@ namespace Redmine.Portable.Service
     public partial class DataService : IDataService
     {
         private const string ISSUES_URL = "issues.json";
+        private const string ISSUE_URL = "issues/{0}.json?include=children,journals";
 
         public async Task<HttpResponse<IssuesResult>> GetIssues(int? offset = null, int? limit = null, string sort = null, int? projectId = null, int? subProjectId = null, int? trackerId = null, Statuses status = Statuses.open, int? assignedToId = null)
         {
@@ -28,6 +29,14 @@ namespace Redmine.Portable.Service
 
             var requestUrl = ListParameterFactory(_credential.EndpointUrl + ISSUES_URL, offset, limit, parameters);
             var result = await GetDeserializedObject<IssuesResult>(requestUrl, HttpMode.Get);
+
+            return result;
+        }
+
+        public async Task<HttpResponse<IssueResult>> GetIssue(int id)
+        {
+            var requestUrl = _credential.EndpointUrl + String.Format(ISSUE_URL, id);
+            var result = await GetDeserializedObject<IssueResult>(requestUrl, HttpMode.Get);
 
             return result;
         }
